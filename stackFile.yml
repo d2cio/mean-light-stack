@@ -2,7 +2,7 @@ version: '1.0'
 services:
   - name: mongo
     type: mongodb
-    version: 4.0
+    version: 4.2
     configuration: StandAlone
     password: null
     ports:
@@ -26,8 +26,9 @@ services:
       - main
 
   - name: dbman
-    type: nodejs
-    version: 10
+    type: docker
+    image: mongo-express
+    version: latest
     ports:
       - 8081
     source:
@@ -52,7 +53,7 @@ services:
 
   - name: proxy
     type: nginx
-    version: 1.15
+    version: 1.17
     ports:
       - 80
       - 443
